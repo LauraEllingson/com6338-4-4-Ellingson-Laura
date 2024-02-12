@@ -13,7 +13,7 @@ var words = [
   'mango'
 ];
 
-// Retrieve elements from HTML
+//  elements from HTML
 var wordToGuessEl = document.getElementById('word-to-guess');
 var previousWordEl = document.getElementById('previous-word');
 var incorrectLettersEl = document.getElementById('incorrect-letters');
@@ -29,17 +29,17 @@ var previousWord = ""; // Variable to store the previous word
 var remainingGuesses = 10; // Variable to store remaining guesses
 var wordToGuess; // Variable to store the word to be guessed
 
-// track wins and losses
+// Track 
 var wins = 0;
 var losses = 0;
 
-// Initializing remaining guesses display
+
 remainingGuessesEl.textContent = `${remainingGuesses}`;
 
 
 startGame();
 
-// Function to start the game
+
 function startGame() {
   // Selecting a word at random from the words array
   wordToGuess = words[Math.floor(Math.random() * words.length)];
@@ -60,9 +60,8 @@ document.body.addEventListener('keyup', function (e) {
   var key = e.key.toLowerCase();
   console.log(key);
 
-  // Validate if the input is a lowercase letter
-  if (!/^[a-z]+$/.test(key)) return;
-
+  // Filter out non-letter keys
+  if (!/^[a-zA-Z]+$/.test(key) || key.length !== 1) return;
 
   // Checking if the letter has already been guessed
   if (incorrectArr.includes(key) || correctArr.includes(key)) return;
@@ -89,7 +88,7 @@ document.body.addEventListener('keyup', function (e) {
     remainingGuessesEl.textContent = `${remainingGuesses}`;
     startGame();
   }
-
+  
   if (remainingGuesses === 0) {
     losses++;
     loseEl.textContent = `${losses}`;
@@ -98,7 +97,7 @@ document.body.addEventListener('keyup', function (e) {
     remainingGuessesEl.textContent = `${remainingGuesses}`;
     startGame();
   }
-})
+});
 
 // Function to update the display of the word to be guessed
 function wordPick() {
