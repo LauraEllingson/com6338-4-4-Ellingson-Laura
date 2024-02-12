@@ -60,8 +60,9 @@ document.body.addEventListener('keyup', function (e) {
   var key = e.key.toLowerCase();
   console.log(key);
 
-  // Validating if the input is a letter
-  if (!/^[a-zA-Z]+$/.test(key)) return;
+  // Validate if the input is a lowercase letter
+  if (!/^[a-z]+$/.test(key)) return;
+
 
   // Checking if the letter has already been guessed
   if (incorrectArr.includes(key) || correctArr.includes(key)) return;
